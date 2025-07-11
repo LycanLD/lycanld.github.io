@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send a Message to Lycan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #5865F2 0%, #23272A 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            font-size: 2.2rem;
+        }
+        form {
+            background: #fff;
+            max-width: 540px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 32px 36px 24px 36px;
+            border-radius: 20px;
+            box-shadow: 0 6px 32px rgba(40, 50, 80, 0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            align-self: flex-start;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #23272A;
+            font-size: 1.15rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            background: #f8fafc;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        input:focus, textarea:focus {
+            border-color: #5865F2;
+            outline: none;
+            background: #fff;
+        }
+        button {
+            width: 100%;
+            margin-top: 16px;
+            padding: 16px 0;
+            background: #5865F2;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(88, 101, 242, 0.12);
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #4752c4;
+        }
+        .status {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 1.15rem;
+            color: #fff;
+            min-height: 28px;
+        }
+        /* Advanced checkbox styles */
+        .checkbox-wrapper {
+          --checkbox-size: 25px;
+          --checkbox-color: #00aaff;
+          --checkbox-shadow: rgba(0, 170, 255, 0.3);
+          --checkbox-border: rgba(0, 170, 255, 0.7);
+          display: flex;
+          align-items: center;
+          position: relative;
+          cursor: pointer;
+          padding: 1px 1px;
+          margin-bottom: 8px;
+        }
+        .checkbox-wrapper input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+        .checkbox-wrapper .checkmark {
+          position: relative;
+          width: var(--checkbox-size);
+          height: var(--checkbox-size);
+          border: 2px solid var(--checkbox-border);
+          border-radius: 8px;
+          transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 15px var(--checkbox-shadow);
+          overflow: hidden;
+        }
+        .checkbox-wrapper .checkmark::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, var(--checkbox-color), #00ffcc);
+          opacity: 0;
+          transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          transform: scale(0) rotate(-45deg);
+        }
+        .checkbox-wrapper input:checked ~ .checkmark::before {
+          opacity: 1;
+          transform: scale(1) rotate(0);
+        }
+        .checkbox-wrapper .checkmark svg {
+          width: 0;
+          height: 0;
+          color: #1a1a1a;
+          z-index: 1;
+          transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+        }
+        .checkbox-wrapper input:checked ~ .checkmark svg {
+          width: 18px;
+          height: 18px;
+          transform: rotate(360deg);
+        }
+        .checkbox-wrapper:hover .checkmark {
+          border-color: var(--checkbox-color);
+          transform: scale(1.1);
+          box-shadow:
+            0 0 20px var(--checkbox-shadow),
+            0 0 40px var(--checkbox-shadow),
+            inset 0 0 10px var(--checkbox-shadow);
+        }
+        .checkbox-wrapper input:checked ~ .checkmark {
+          animation: pulse 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+            box-shadow: 0 0 20px var(--checkbox-shadow);
+          }
+          50% {
+            transform: scale(0.9);
+            box-shadow:
+              0 0 30px var(--checkbox-shadow),
+              0 0 50px var(--checkbox-shadow);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: 0 0 20px var(--checkbox-shadow);
+          }
+        }
+        .checkbox-wrapper .label {
+          margin-left: 10px;
+          font-family: "Segoe UI", sans-serif;
+          color: var(--checkbox-color);
+          font-size: 17px;
+          text-shadow: 0 0 10px var(--checkbox-shadow);
+          opacity: 0.9;
+          transition: all 0.3s;
+        }
+        .checkbox-wrapper:hover .label {
+          opacity: 1;
+          transform: translateX(5px);
+        }
+        .checkbox-wrapper::after,
+        .checkbox-wrapper::before {
+          content: "";
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: var(--checkbox-color);
+          opacity: 0;
+          transition: all 0.5s;
+        }
+        .checkbox-wrapper::before {
+          left: -10px;
+          top: 50%;
+        }
+        .checkbox-wrapper::after {
+          right: -10px;
+          top: 50%;
+        }
+        .checkbox-wrapper:hover::before {
+          opacity: 1;
+          transform: translateX(-10px);
+          box-shadow: 0 0 10px var(--checkbox-color);
+        }
+        .checkbox-wrapper:hover::after {
+          opacity: 1;
+          transform: translateX(10px);
+          box-shadow: 0 0 10px var(--checkbox-color);
+        }
+    </style>
+</head>
+<body>
+    <h2>Send a Message to Lycan</h2>
+    <form id="lycanForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label class="checkbox-wrapper" style="margin-bottom:0;">
+          <input type="checkbox" id="anonymous" />
+          <div class="checkmark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path
+                d="M20 6L9 17L4 12"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </div>
+          <span class="label">Anonymous Mode</span>
+        </label>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+    <div class="status" id="status"></div>
+    <script>
+        const form = document.getElementById('lycanForm');
+        const statusDiv = document.getElementById('status');
+        const nameInput = document.getElementById('name');
+        const anonymousCheckbox = document.getElementById('anonymous');
+
+        // Toggle name input based on anonymous mode
+        anonymousCheckbox.addEventListener('change', function() {
+            if (anonymousCheckbox.checked) {
+                nameInput.value = '';
+                nameInput.disabled = true;
+                nameInput.placeholder = 'Anonymous';
+            } else {
+                nameInput.disabled = false;
+                nameInput.placeholder = '';
+            }
+        });
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            statusDiv.textContent = '';
+            let name = nameInput.value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            if (anonymousCheckbox.checked) {
+                name = "Anonymous";
+            }
+
+            // WARNING: This exposes your webhook URL!
+            const webhookUrl = 'https://discord.com/api/webhooks/1378738875349864558/iEgTIYgFPbmQM2FzaIFCG2kyo4dy-YEeRUawZF0BW7F7Dkgge1Im9Ek1vZQ9JYm1hRZU';
+
+            const payload = {
+                username: name || "Anonymous",
+                embeds: [{
+                    title: subject,
+                    description: message,
+                    color: 0x5865F2,
+                    footer: { text: "Sent to Lycan via GitHub Page" }
+                }]
+            };
+
+            try {
+                const res = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    statusDiv.textContent = "Message sent successfully!";
+                    form.reset();
+                    nameInput.disabled = false;
+                    nameInput.placeholder = '';
+                } else {
+                    statusDiv.textContent = "Failed to send message. Please try again.";
+                }
+            } catch (err) {
+                statusDiv.textContent = "Error sending message.";
+            }
+        });
+    </script>
+</body>
+</html>
