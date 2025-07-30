@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LycanChat V3.2</title>
+  <title>Loading LycanChat…</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://i.pinimg.com/474x/99/b5/43/99b5432301ef224c44e98a3f8913cbbd.jpg" type="image/jpeg">
+
   <style>
     html, body {
       margin: 0;
@@ -22,6 +26,22 @@
   </style>
 </head>
 <body>
-  <iframe src="https://lycanchat.onrender.com/" allowfullscreen></iframe>
+  <iframe id="chatFrame" src="https://lycanchat.onrender.com/" allowfullscreen></iframe>
+
+  <script>
+    const iframe = document.getElementById('chatFrame');
+
+    // Try updating title from iframe's document (only works if same-origin)
+    iframe.onload = () => {
+      try {
+        const iframeTitle = iframe.contentDocument.title;
+        if (iframeTitle) document.title = iframeTitle;
+      } catch (err) {
+        console.warn("Can't access iframe title (likely cross-origin)");
+        // fallback title
+        document.title = "LycanChat";
+      }
+    };
+  </script>
 </body>
 </html>
