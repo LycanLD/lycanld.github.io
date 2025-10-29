@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn Giữa HK1 Lớp 8 - English Learning Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6750A4;
+            --primary-container: #EADDFF;
+            --on-primary: #FFFFFF;
+            --on-primary-container: #21005D;
+            --secondary: #625B71;
+            --secondary-container: #E8DEF8;
+            --on-secondary: #FFFFFF;
+            --on-secondary-container: #1D192B;
+            --tertiary: #7D5260;
+            --tertiary-container: #FFD8E4;
+            --on-tertiary: #FFFFFF;
+            --on-tertiary-container: #31111D;
+            --surface: #FEF7FF;
+            --surface-variant: #E7E0EC;
+            --on-surface-variant: #49454F;
+            --outline: #79747E;
+            --background: #FEF7FF;
+            --on-background: #1D1B20;
+            --error: #BA1A1A;
+            --error-container: #FFDAD6;
+            --on-error: #FFFFFF;
+            --on-error-container: #410002;
+            --shadow: rgba(0, 0, 0, 0.2);
+            --scrim: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--on-background);
+            line-height: 1.5;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-container);
+            padding: 16px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .logo .material-icons {
+            font-size: 32px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 20px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--on-primary);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 2px 8px rgba(103, 80, 164, 0.3);
+        }
+
+        .btn-outlined {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--outline);
+        }
+
+        .btn-outlined:hover {
+            background-color: rgba(103, 80, 164, 0.08);
+        }
+
+        /* Main Content */
+        main {
+            padding: 24px 0;
+            min-height: calc(100vh - 120px);
+        }
+
+        .hero {
+            background-color: var(--primary-container);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--on-primary-container);
+        }
+
+        /* Section Cards */
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .section-card {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .section-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .section-card p {
+            color: var(--on-surface-variant);
+            margin-bottom: 16px;
+        }
+
+        .section-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--secondary);
+        }
+
+        /* Quiz Interface */
+        .quiz-container {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--outline);
+        }
+
+        .quiz-progress {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background-color: var(--surface-variant);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .question-container {
+            margin-bottom: 24px;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--outline);
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.2);
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .quiz-feedback {
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .feedback-correct {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #2E7D32;
+        }
+
+        .feedback-incorrect {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: #C62828;
+        }
+
+        .explanation {
+            margin-top: 8px;
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        /* Admin Panel */
+        .admin-container {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--outline);
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--outline);
+        }
+
+        .tab {
+            padding: 12px 16px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--on-surface-variant);
+            transition: all 0.2s ease;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--outline);
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.2);
+        }
+
+        .questions-list {
+            margin-top: 24px;
+        }
+
+        .question-item {
+            background-color: var(--surface-variant);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .question-content {
+            flex: 1;
+        }
+
+        .question-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--surface);
+            color: var(--on-surface-variant);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            background-color: var(--primary-container);
+            color: var(--primary);
+        }
+
+        .icon-btn.delete:hover {
+            background-color: var(--error-container);
+            color: var(--error);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--scrim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--surface);
+            border-radius: 16px;
+            padding: 24px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background-color: transparent;
+            color: var(--on-surface-variant);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            margin-bottom: 24px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--shadow);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quiz-progress {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .progress-bar {
+                width: 100%;
+            }
+
+            .quiz-actions {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .quiz-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            --primary: #D0BCFF;
+            --primary-container: #4F378B;
+            --on-primary: #381E72;
+            --on-primary-container: #EADDFF;
+            --secondary: #CCC2DC;
+            --secondary-container: #4A4458;
+            --on-secondary: #332D41;
+            --on-secondary-container: #E8DEF8;
+            --tertiary: #EFB8C8;
+            --tertiary-container: #633B48;
+            --on-tertiary: #492532;
+            --on-tertiary-container: #FFD8E4;
+            --surface: #141218;
+            --surface-variant: #49454F;
+            --on-surface-variant: #CAC4D0;
+            --outline: #938F99;
+            --background: #141218;
+            --on-background: #E6E0E9;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--on-surface-variant);
+        }
+
+        .empty-state .material-icons {
+            font-size: 64px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="material-icons">school</span>
+                    <span>Ôn Giữa HK1 Lớp 8</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outlined" id="themeToggle">
+                        <span class="material-icons">dark_mode</span>
+                        <span>Chủ đề</span>
+                    </button>
+                    <button class="btn btn-primary" id="adminToggle">
+                        <span class="material-icons">admin_panel_settings</span>
+                        <span>Quản trị</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Home View -->
+            <div id="homeView">
+                <div class="hero">
+                    <h1>Nền tảng ôn tập Tiếng Anh giữa kỳ 1 - Lớp 8</h1>
+                    <p>Chào mừng đến với nền tảng ôn tập Tiếng Anh giữa kỳ 1 cho học sinh lớp 8. Hãy chọn một phần để bắt đầu luyện tập!</p>
+                </div>
+
+                <div class="sections-grid" id="sectionsGrid">
+                    <!-- Sections will be dynamically loaded here -->
+                </div>
+            </div>
+
+            <!-- Quiz View -->
+            <div class="quiz-container" id="quizView">
+                <div class="quiz-header">
+                    <h2 id="quizTitle">Part 1: Word Form Unit 1</h2>
+                    <div class="quiz-progress">
+                        <span id="questionProgress">1 / 10</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question" id="questionText">
+                        Scientists are still looking for a ____ to this serious problem. (solve)
+                    </div>
+                    <input type="text" class="answer-input" id="answerInput" placeholder="Nhập câu trả lời của bạn...">
+                </div>
+
+                <div class="quiz-feedback" id="quizFeedback">
+                    <div id="feedbackText"></div>
+                    <div id="explanationText" class="explanation"></div>
+                </div>
+
+                <div class="quiz-actions">
+                    <button class="btn btn-outlined" id="prevBtn">
+                        <span class="material-icons">arrow_back</span>
+                        <span>Câu trước</span>
+                    </button>
+                    <button class="btn btn-primary" id="checkAnswerBtn">
+                        <span class="material-icons">check_circle</span>
+                        <span>Kiểm Tra Kết quả</span>
+                    </button>
+                    <button class="btn btn-primary" id="nextBtn">
+                        <span>Câu tiếp theo</span>
+                        <span class="material-icons">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Admin View -->
+            <div class="admin-container" id="adminView">
+                <div class="admin-header">
+                    <h2>Quản trị nội dung</h2>
+                    <button class="btn btn-outlined" id="backToHomeBtn">
+                        <span class="material-icons">arrow_back</span>
+                        <span>Quay lại</span>
+                    </button>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="tab active" data-tab="sections">Phần học tập</button>
+                    <button class="tab" data-tab="questions">Câu hỏi</button>
+                    <button class="tab" data-tab="settings">Cài đặt</button>
+                </div>
+
+                <!-- Sections Tab -->
+                <div class="tab-content active" id="sectionsTab">
+                    <h3>Quản lý phần học tập</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="sectionName">Tên phần học tập</label>
+                        <input type="text" class="form-input" id="sectionName" placeholder="Ví dụ: Part 1: Word Form Unit 1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="sectionDesc">Mô tả</label>
+                        <textarea class="form-textarea" id="sectionDesc" placeholder="Mô tả ngắn về phần học tập"></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="addSectionBtn">
+                        <span class="material-icons">add</span>
+                        <span>Thêm phần học tập</span>
+                    </button>
+
+                    <div class="questions-list" id="sectionsList">
+                        <!-- Sections will be dynamically loaded here -->
+                    </div>
+                </div>
+
+                <!-- Questions Tab -->
+                <div class="tab-content" id="questionsTab">
+                    <h3>Quản lý câu hỏi</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="questionSection">Chọn phần học tập</label>
+                        <select class="form-select" id="questionSection">
+                            <!-- Options will be dynamically loaded -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="questionText">Nội dung câu hỏi</label>
+                        <textarea class="form-textarea" id="questionText" placeholder="Nhập nội dung câu hỏi"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="questionAnswer">Đáp án</label>
+                        <input type="text" class="form-input" id="questionAnswer" placeholder="Nhập đáp án">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="questionExplanation">Giải thích (tùy chọn)</label>
+                        <textarea class="form-textarea" id="questionExplanation" placeholder="Nhập giải thích cho câu trả lời"></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="addQuestionBtn">
+                        <span class="material-icons">add</span>
+                        <span>Thêm câu hỏi</span>
+                    </button>
+
+                    <div class="questions-list" id="questionsList">
+                        <!-- Questions will be dynamically loaded here -->
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="tab-content" id="settingsTab">
+                    <h3>Cài đặt</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="adminPassword">Mật khẩu quản trị</label>
+                        <input type="password" class="form-input" id="adminPassword" placeholder="Nhập mật khẩu mới">
+                    </div>
+                    <button class="btn btn-primary" id="updatePasswordBtn">
+                        <span class="material-icons">save</span>
+                        <span>Cập nhật mật khẩu</span>
+                    </button>
+                    
+                    <div class="form-group" style="margin-top: 24px;">
+                        <label class="form-label">Xuất/Nhập dữ liệu</label>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-outlined" id="exportDataBtn">
+                                <span class="material-icons">download</span>
+                                <span>Xuất dữ liệu</span>
+                            </button>
+                            <button class="btn btn-outlined" id="importDataBtn">
+                                <span class="material-icons">upload</span>
+                                <span>Nhập dữ liệu</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Đăng nhập quản trị</h3>
+                <button class="modal-close" id="closeLoginModal">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="loginPassword">Mật khẩu</label>
+                    <input type="password" class="form-input" id="loginPassword" placeholder="Nhập mật khẩu quản trị">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outlined" id="cancelLoginBtn">Hủy</button>
+                <button class="btn btn-primary" id="confirmLoginBtn">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        // API Configuration for Cloudflare D1
+        const API_BASE_URL = 'https://englishreview.tranlongdo2506.workers.dev/api'; // Replace with your worker URL
+        
+        // App State
+        const app = {
+            currentView: 'home',
+            currentSection: null,
+            currentQuestionIndex: 0,
+            isAdmin: false,
+            darkMode: false,
+            sections: [],
+        };
+
+        // DOM Elements
+        const elements = {
+            homeView: document.getElementById('homeView'),
+            quizView: document.getElementById('quizView'),
+            adminView: document.getElementById('adminView'),
+            sectionsGrid: document.getElementById('sectionsGrid'),
+            quizTitle: document.getElementById('quizTitle'),
+            questionProgress: document.getElementById('questionProgress'),
+            progressFill: document.getElementById('progressFill'),
+            questionText: document.getElementById('questionText'),
+            answerInput: document.getElementById('answerInput'),
+            quizFeedback: document.getElementById('quizFeedback'),
+            feedbackText: document.getElementById('feedbackText'),
+            explanationText: document.getElementById('explanationText'),
+            prevBtn: document.getElementById('prevBtn'),
+            checkAnswerBtn: document.getElementById('checkAnswerBtn'),
+            nextBtn: document.getElementById('nextBtn'),
+            themeToggle: document.getElementById('themeToggle'),
+            adminToggle: document.getElementById('adminToggle'),
+            backToHomeBtn: document.getElementById('backToHomeBtn'),
+            loginModal: document.getElementById('loginModal'),
+            closeLoginModal: document.getElementById('closeLoginModal'),
+            cancelLoginBtn: document.getElementById('cancelLoginBtn'),
+            confirmLoginBtn: document.getElementById('confirmLoginBtn'),
+            loginPassword: document.getElementById('loginPassword'),
+            toast: document.getElementById('toast'),
+            loadingSpinner: document.getElementById('loadingSpinner'),
+            // Admin elements
+            sectionsTab: document.getElementById('sectionsTab'),
+            questionsTab: document.getElementById('questionsTab'),
+            settingsTab: document.getElementById('settingsTab'),
+            sectionName: document.getElementById('sectionName'),
+            sectionDesc: document.getElementById('sectionDesc'),
+            addSectionBtn: document.getElementById('addSectionBtn'),
+            sectionsList: document.getElementById('sectionsList'),
+            questionSection: document.getElementById('questionSection'),
+            questionText: document.getElementById('questionText'),
+            questionAnswer: document.getElementById('questionAnswer'),
+            questionExplanation: document.getElementById('questionExplanation'),
+            addQuestionBtn: document.getElementById('addQuestionBtn'),
+            questionsList: document.getElementById('questionsList'),
+            adminPassword: document.getElementById('adminPassword'),
+            updatePasswordBtn: document.getElementById('updatePasswordBtn'),
+            exportDataBtn: document.getElementById('exportDataBtn'),
+            importDataBtn: document.getElementById('importDataBtn')
+        };
+
+        // Initialize App
+        async function init() {
+            loadFromLocalStorage();
+            setupEventListeners();
+            checkDarkMode();
+            
+            // Load data from Cloudflare D1
+            await loadDataFromD1();
+            
+            // If no data from D1, use default data
+            if (app.sections.length === 0) {
+                loadDefaultData();
+            }
+            
+            renderSections();
+        }
+
+        // Load default data
+        function loadDefaultData() {
+            app.sections = [
+                {
+                    id: 1,
+                    name: 'Part 1: Word Form Unit 1',
+                    description: 'Luyện tập từ vựng Unit 1',
+                    questions: [
+                        {
+                            id: 1,
+                            text: 'Scientists are still looking for a ____ to this serious problem. (solve)',
+                            answer: 'solution',
+                            explanation: 'Danh từ của động từ "solve" là "solution" (giải pháp)'
+                        },
+                        {
+                            id: 2,
+                            text: 'Her ____ in the competition was a great surprise to everyone. (succeed)',
+                            answer: 'success',
+                            explanation: 'Danh từ của động từ "succeed" là "success" (sự thành công)'
+                        },
+                        {
+                            id: 3,
+                            text: 'The ____ of the new bridge will take at least two years. (construct)',
+                            answer: 'construction',
+                            explanation: 'Danh từ của động từ "construct" là "construction" (sự xây dựng)'
+                        },
+                        {
+                            id: 4,
+                            text: 'We must protect the ____ for future generations. (environment)',
+                            answer: 'environment',
+                            explanation: 'Đây là danh từ chỉ môi trường sống'
+                        },
+                        {
+                            id: 5,
+                            text: 'His ____ to become a doctor was supported by his family. (decide)',
+                            answer: 'decision',
+                            explanation: 'Danh từ của động từ "decide" là "decision" (quyết định)'
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    name: 'Part 2: Word Form Unit 2',
+                    description: 'Luyện tập từ vựng Unit 2',
+                    questions: [
+                        {
+                            id: 6,
+                            text: 'The ____ of the forest has caused many environmental problems. (destroy)',
+                            answer: 'destruction',
+                            explanation: 'Danh từ của động từ "destroy" là "destruction" (sự phá hủy)'
+                        },
+                        {
+                            id: 7,
+                            text: 'She showed great ____ in dealing with the difficult situation. (patient)',
+                            answer: 'patience',
+                            explanation: 'Danh từ của tính từ "patient" là "patience" (sự kiên nhẫn)'
+                        },
+                        {
+                            id: 8,
+                            text: 'The company has announced plans for ____. (expand)',
+                            answer: 'expansion',
+                            explanation: 'Danh từ của động từ "expand" là "expansion" (sự mở rộng)'
+                        },
+                        {
+                            id: 9,
+                            text: 'His ____ made it difficult for him to make friends. (shy)',
+                            answer: 'shyness',
+                            explanation: 'Danh từ của tính từ "shy" là "shyness" (sự nhút nhát)'
+                        },
+                        {
+                            id: 10,
+                            text: 'The ____ of the new technology has changed our lives. (introduce)',
+                            answer: 'introduction',
+                            explanation: 'Danh từ của động từ "introduce" là "introduction" (sự giới thiệu)'
+                        }
+                    ]
+                },
+                {
+                    id: 3,
+                    name: 'Part 3: Verb Form',
+                    description: 'Luyện tập dạng động từ',
+                    questions: [
+                        {
+                            id: 11,
+                            text: 'If I ____ you, I would study harder for the exam. (be)',
+                            answer: 'were',
+                            explanation: 'Đây là câu điều kiện loại 2, dùng "were" cho tất cả các ngôi'
+                        },
+                        {
+                            id: 12,
+                            text: 'She ____ to London three times. (be)',
+                            answer: 'has been',
+                            explanation: 'Dùng thì hiện tại hoàn thành vì hành động xảy ra trong quá khứ và kết quả còn ở hiện tại'
+                        },
+                        {
+                            id: 13,
+                            text: 'By the time we arrived, they ____. (leave)',
+                            answer: 'had left',
+                            explanation: 'Dùng thì quá khứ hoàn thành vì hành động xảy ra trước một hành động khác trong quá khứ'
+                        },
+                        {
+                            id: 14,
+                            text: 'He suggested ____ a movie tonight. (watch)',
+                            answer: 'watching',
+                            explanation: 'Sau động từ "suggest" dùng V-ing'
+                        },
+                        {
+                            id: 15,
+                            text: 'I wish I ____ more time to finish this project. (have)',
+                            answer: 'had',
+                            explanation: 'Đây là câu ước ở hiện tại, dùng thì quá khứ đơn'
+                        }
+                    ]
+                },
+                {
+                    id: 4,
+                    name: 'Part 4: Rewrite',
+                    description: 'Luyện tập viết lại câu',
+                    questions: [
+                        {
+                            id: 16,
+                            text: 'Rewrite: "I haven"t seen this film before." → This is the first time I ____ this film.',
+                            answer: 'have seen',
+                            explanation: 'Cấu trúc "This is the first time + S + have/has + V3/ed"'
+                        },
+                        {
+                            id: 17,
+                            text: 'Rewrite: "They built this house in 2010." → This house ____ in 2010.',
+                            answer: 'was built',
+                            explanation: 'Chuyển từ câu chủ động sang bị động thì quá khứ đơn'
+                        },
+                        {
+                            id: 18,
+                            text: 'Rewrite: "She said, "I"m busy now."" → She said that she ____ busy then.',
+                            answer: 'was',
+                            explanation: 'Trực tiếp tường thuật thì hiện tại đơn thành quá khứ đơn'
+                        },
+                        {
+                            id: 19,
+                            text: 'Rewrite: "Although it was raining, we went out." → Despite ____, we went out.',
+                            answer: 'the rain',
+                            explanation: 'Chuyển từ mệnh đề "Although" thành cụm "Despite + N/V-ing"'
+                        },
+                        {
+                            id: 20,
+                            text: 'Rewrite: "He is too young to drive." → He isn"t ____ to drive.',
+                            answer: 'old enough',
+                            explanation: 'Chuyển từ cấu trúc "too + adj + to V" thành "not + adj + enough + to V"'
+                        }
+                    ]
+                }
+            ];
+        }
+
+        // Load data from localStorage
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem('englishAppData');
+            if (savedData) {
+                const parsedData = JSON.parse(savedData);
+                app.sections = parsedData.sections || app.sections;
+                app.adminPassword = parsedData.adminPassword || app.adminPassword;
+                app.darkMode = parsedData.darkMode || false;
+            }
+        }
+
+        // Save data to localStorage
+        function saveToLocalStorage() {
+            const dataToSave = {
+                sections: app.sections,
+                adminPassword: app.adminPassword,
+                darkMode: app.darkMode
+            };
+            localStorage.setItem('englishAppData', JSON.stringify(dataToSave));
+        }
+
+        // Check dark mode preference
+        function checkDarkMode() {
+            if (app.darkMode) {
+                document.body.classList.add('dark-mode');
+                elements.themeToggle.querySelector('.material-icons').textContent = 'light_mode';
+            }
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Theme toggle
+            elements.themeToggle.addEventListener('click', toggleTheme);
+
+            // Admin toggle
+            elements.adminToggle.addEventListener('click', showLoginModal);
+
+            // Back to home
+            elements.backToHomeBtn.addEventListener('click', showHomeView);
+
+            // Quiz navigation
+            elements.prevBtn.addEventListener('click', previousQuestion);
+            elements.nextBtn.addEventListener('click', nextQuestion);
+            elements.checkAnswerBtn.addEventListener('click', checkAnswer);
+
+            // Login modal
+            elements.closeLoginModal.addEventListener('click', closeLoginModal);
+            elements.cancelLoginBtn.addEventListener('click', closeLoginModal);
+            elements.confirmLoginBtn.addEventListener('click', login);
+
+            // Admin tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+            });
+
+            // Admin actions
+            elements.addSectionBtn.addEventListener('click', addSection);
+            elements.addQuestionBtn.addEventListener('click', addQuestion);
+            elements.updatePasswordBtn.addEventListener('click', updatePassword);
+            elements.exportDataBtn.addEventListener('click', exportData);
+            elements.importDataBtn.addEventListener('click', importData);
+
+            // Answer input
+            elements.answerInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    checkAnswer();
+                }
+            });
+        }
+
+        // Toggle Theme
+        function toggleTheme() {
+            app.darkMode = !app.darkMode;
+            document.body.classList.toggle('dark-mode');
+            elements.themeToggle.querySelector('.material-icons').textContent = 
+                app.darkMode ? 'light_mode' : 'dark_mode';
+            saveToLocalStorage();
+        }
+
+        // Show Login Modal
+        function showLoginModal() {
+            elements.loginModal.classList.add('active');
+            elements.loginPassword.focus();
+        }
+
+        // Close Login Modal
+        function closeLoginModal() {
+            elements.loginModal.classList.remove('active');
+            elements.loginPassword.value = '';
+        }
+
+        // Login
+        function login() {
+            const password = elements.loginPassword.value;
+            if (password === app.adminPassword) {
+                app.isAdmin = true;
+                closeLoginModal();
+                showAdminView();
+                renderAdminContent();
+                showToast('Đăng nhập thành công!');
+            } else {
+                showToast('Mật khẩu không chính xác!', 'error');
+            }
+        }
+
+        // Show Home View
+        function showHomeView() {
+            hideAllViews();
+            elements.homeView.style.display = 'block';
+            app.currentView = 'home';
+        }
+
+        // Show Quiz View
+        function showQuizView(sectionId) {
+            hideAllViews();
+            elements.quizView.style.display = 'block';
+            app.currentView = 'quiz';
+            app.currentSection = app.sections.find(s => s.id === sectionId);
+            app.currentQuestionIndex = 0;
+            
+            if (app.currentSection) {
+                elements.quizTitle.textContent = app.currentSection.name;
+                loadQuestion();
+            }
+        }
+
+        // Show Admin View
+        function showAdminView() {
+            hideAllViews();
+            elements.adminView.style.display = 'block';
+            app.currentView = 'admin';
+        }
+
+        // Hide All Views
+        function hideAllViews() {
+            elements.homeView.style.display = 'none';
+            elements.quizView.style.display = 'none';
+            elements.adminView.style.display = 'none';
+        }
+
+        // Render Sections
+        function renderSections() {
+            elements.sectionsGrid.innerHTML = '';
+            
+            app.sections.forEach(section => {
+                const card = document.createElement('div');
+                card.className = 'section-card';
+                card.innerHTML = `
+                    <h3>${section.name}</h3>
+                    <p>${section.description}</p>
+                    <div class="section-stats">
+                        <span><span class="material-icons" style="font-size: 16px; vertical-align: middle;">quiz</span> ${section.questions.length} câu hỏi</span>
+                        <span><span class="material-icons" style="font-size: 16px; vertical-align: middle;">schedule</span> ${Math.ceil(section.questions.length * 1.5)} phút</span>
+                    </div>
+                `;
+                card.addEventListener('click', () => showQuizView(section.id));
+                elements.sectionsGrid.appendChild(card);
+            });
+        }
+
+        // Load Question
+        function loadQuestion() {
+            if (!app.currentSection || app.currentQuestionIndex >= app.currentSection.questions.length) {
+                showQuizComplete();
+                return;
+            }
+
+            const question = app.currentSection.questions[app.currentQuestionIndex];
+            elements.questionText.textContent = question.text;
+            elements.answerInput.value = '';
+            elements.quizFeedback.style.display = 'none';
+            
+            updateProgress();
+        }
+
+        // Update Progress
+        function updateProgress() {
+            const total = app.currentSection.questions.length;
+            const current = app.currentQuestionIndex + 1;
+            const percentage = (current / total) * 100;
+            
+            elements.questionProgress.textContent = `${current} / ${total}`;
+            elements.progressFill.style.width = `${percentage}%`;
+            
+            // Disable/enable navigation buttons
+            elements.prevBtn.disabled = app.currentQuestionIndex === 0;
+            elements.nextBtn.disabled = app.currentQuestionIndex === total - 1;
+        }
+
+        // Previous Question
+        function previousQuestion() {
+            if (app.currentQuestionIndex > 0) {
+                app.currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        // Next Question
+        function nextQuestion() {
+            if (app.currentQuestionIndex < app.currentSection.questions.length - 1) {
+                app.currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showQuizComplete();
+            }
+        }
+
+        // Check Answer
+        function checkAnswer() {
+            const userAnswer = elements.answerInput.value.trim().toLowerCase();
+            const correctAnswer = app.currentSection.questions[app.currentQuestionIndex].answer.toLowerCase();
+            const explanation = app.currentSection.questions[app.currentQuestionIndex].explanation;
+            
+            elements.quizFeedback.style.display = 'block';
+            
+            if (userAnswer === correctAnswer) {
+                elements.quizFeedback.className = 'quiz-feedback feedback-correct';
+                elements.feedbackText.textContent = 'Chính xác! Tuyệt vời!';
+                elements.explanationText.textContent = explanation || '';
+            } else {
+                elements.quizFeedback.className = 'quiz-feedback feedback-incorrect';
+                elements.feedbackText.textContent = `Chưa chính xác. Đáp án đúng là: ${app.currentSection.questions[app.currentQuestionIndex].answer}`;
+                elements.explanationText.textContent = explanation || '';
+            }
+        }
+
+        // Show Quiz Complete
+        function showQuizComplete() {
+            elements.questionText.textContent = 'Bạn đã hoàn thành phần này!';
+            elements.answerInput.style.display = 'none';
+            elements.checkAnswerBtn.style.display = 'none';
+            elements.nextBtn.innerHTML = '<span class="material-icons">home</span><span>Về trang chủ</span>';
+            elements.nextBtn.onclick = showHomeView;
+        }
+
+        // Switch Admin Tab
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(`${tabName}Tab`).classList.add('active');
+            
+            if (tabName === 'questions') {
+                populateSectionSelect();
+                renderQuestions();
+            } else if (tabName === 'sections') {
+                renderSectionsList();
+            }
+        }
+
+        // Render Admin Content
+        function renderAdminContent() {
+            renderSectionsList();
+            populateSectionSelect();
+            renderQuestions();
+        }
+
+        // Render Sections List
+        function renderSectionsList() {
+            elements.sectionsList.innerHTML = '';
+            
+            if (app.sections.length === 0) {
+                elements.sectionsList.innerHTML = `
+                    <div class="empty-state">
+                        <span class="material-icons">folder_open</span>
+                        <h3>Chưa có phần học tập</h3>
+                        <p>Thêm phần học tập đầu tiên để bắt đầu</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            app.sections.forEach(section => {
+                const item = document.createElement('div');
+                item.className = 'question-item';
+                item.innerHTML = `
+                    <div class="question-content">
+                        <h4>${section.name}</h4>
+                        <p>${section.description}</p>
+                        <p>${section.questions.length} câu hỏi</p>
+                    </div>
+                    <div class="question-actions">
+                        <button class="icon-btn edit-section" data-id="${section.id}">
+                            <span class="material-icons">edit</span>
+                        </button>
+                        <button class="icon-btn delete delete-section" data-id="${section.id}">
+                            <span class="material-icons">delete</span>
+                        </button>
+                    </div>
+                `;
+                elements.sectionsList.appendChild(item);
+            });
+            
+            // Add event listeners for edit and delete buttons
+            document.querySelectorAll('.edit-section').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const sectionId = parseInt(e.currentTarget.dataset.id);
+                    editSection(sectionId);
+                });
+            });
+            
+            document.querySelectorAll('.delete-section').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const sectionId = parseInt(e.currentTarget.dataset.id);
+                    deleteSection(sectionId);
+                });
+            });
+        }
+
+        // Populate Section Select
+        function populateSectionSelect() {
+            elements.questionSection.innerHTML = '';
+            
+            app.sections.forEach(section => {
+                const option = document.createElement('option');
+                option.value = section.id;
+                option.textContent = section.name;
+                elements.questionSection.appendChild(option);
+            });
+        }
+
+        // Render Questions
+        function renderQuestions() {
+            const sectionId = parseInt(elements.questionSection.value);
+            const section = app.sections.find(s => s.id === sectionId);
+            
+            if (!section) {
+                elements.questionsList.innerHTML = '<p>Chọn một phần học tập để xem câu hỏi</p>';
+                return;
+            }
+            
+            elements.questionsList.innerHTML = '';
+            
+            if (section.questions.length === 0) {
+                elements.questionsList.innerHTML = `
+                    <div class="empty-state">
+                        <span class="material-icons">quiz</span>
+                        <h3>Chưa có câu hỏi</h3>
+                        <p>Thêm câu hỏi đầu tiên cho phần này</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            section.questions.forEach((question, index) => {
+                const item = document.createElement('div');
+                item.className = 'question-item';
+                item.innerHTML = `
+                    <div class="question-content">
+                        <h4>Câu ${index + 1}</h4>
+                        <p>${question.text}</p>
+                        <p><strong>Đáp án:</strong> ${question.answer}</p>
+                        ${question.explanation ? `<p><strong>Giải thích:</strong> ${question.explanation}</p>` : ''}
+                    </div>
+                    <div class="question-actions">
+                        <button class="icon-btn edit-question" data-section-id="${sectionId}" data-question-id="${question.id}">
+                            <span class="material-icons">edit</span>
+                        </button>
+                        <button class="icon-btn delete delete-question" data-section-id="${sectionId}" data-question-id="${question.id}">
+                            <span class="material-icons">delete</span>
+                        </button>
+                    </div>
+                `;
+                elements.questionsList.appendChild(item);
+            });
+            
+            // Add event listeners for edit and delete buttons
+            document.querySelectorAll('.edit-question').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const sectionId = parseInt(e.currentTarget.dataset.sectionId);
+                    const questionId = parseInt(e.currentTarget.dataset.questionId);
+                    editQuestion(sectionId, questionId);
+                });
+            });
+            
+            document.querySelectorAll('.delete-question').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const sectionId = parseInt(e.currentTarget.dataset.sectionId);
+                    const questionId = parseInt(e.currentTarget.dataset.questionId);
+                    deleteQuestion(sectionId, questionId);
+                });
+            });
+        }
+
+        // Add Section
+        async function addSection() {
+            const name = elements.sectionName.value.trim();
+            const description = elements.sectionDesc.value.trim();
+            
+            if (!name) {
+                showToast('Vui lòng nhập tên phần học tập!', 'error');
+                return;
+            }
+            
+            const newSection = {
+                id: Date.now(),
+                name,
+                description,
+                questions: []
+            };
+            
+            // Show loading spinner
+            showLoadingSpinner();
+            
+            try {
+                // Save to Cloudflare D1
+                const response = await fetch(`${API_BASE_URL}/sections`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(newSection)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to add section');
+                }
+                
+                // Add to local state
+                app.sections.push(newSection);
+                saveToLocalStorage();
+                renderSections();
+                renderSectionsList();
+                populateSectionSelect();
+                
+                elements.sectionName.value = '';
+                elements.sectionDesc.value = '';
+                
+                showToast('Đã thêm phần học tập mới!');
+            } catch (error) {
+                console.error('Error adding section:', error);
+                showToast('Lỗi khi thêm phần học tập!', 'error');
+                
+                // Fallback to localStorage if API fails
+                app.sections.push(newSection);
+                saveToLocalStorage();
+                renderSections();
+                renderSectionsList();
+                populateSectionSelect();
+                
+                elements.sectionName.value = '';
+                elements.sectionDesc.value = '';
+                
+                showToast('Đã thêm phần học tập mới (đã lưu cục bộ)!');
+            } finally {
+                hideLoadingSpinner();
+            }
+        }
+
+        // Edit Section
+        function editSection(sectionId) {
+            const section = app.sections.find(s => s.id === sectionId);
+            if (!section) return;
+            
+            elements.sectionName.value = section.name;
+            elements.sectionDesc.value = section.description;
+            
+            // Remove the old section
+            app.sections = app.sections.filter(s => s.id !== sectionId);
+            
+            // Change button text to update
+            elements.addSectionBtn.innerHTML = '<span class="material-icons">save</span><span>Cập nhật</span>';
+            elements.addSectionBtn.onclick = updateSection;
+        }
+
+        // Update Section
+        async function updateSection() {
+            const name = elements.sectionName.value.trim();
+            const description = elements.sectionDesc.value.trim();
+            
+            if (!name) {
+                showToast('Vui lòng nhập tên phần học tập!', 'error');
+                return;
+            }
+            
+            const updatedSection = {
+                id: Date.now(),
+                name,
+                description,
+                questions: []
+            };
+            
+            // Show loading spinner
+            showLoadingSpinner();
+            
+            try {
+                // Update in Cloudflare D1
+                const response = await fetch(`${API_BASE_URL}/sections/${updatedSection.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(updatedSection)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to update section');
+                }
+                
+                // Update local state
+                app.sections.push(updatedSection);
+                saveToLocalStorage();
+                renderSections();
+                renderSectionsList();
+                populateSectionSelect();
+                
+                elements.sectionName.value = '';
+                elements.sectionDesc.value = '';
+                
+                // Reset button
+                elements.addSectionBtn.innerHTML = '<span class="material-icons">add</span><span>Thêm phần học tập</span>';
+                elements.addSectionBtn.onclick = addSection;
+                
+                showToast('Đã cập nhật phần học tập!');
+            } catch (error) {
+                console.error('Error updating section:', error);
+                showToast('Lỗi khi cập nhật phần học tập!', 'error');
+                
+                // Fallback to localStorage if API fails
+                app.sections.push(updatedSection);
+                saveToLocalStorage();
+                renderSections();
+                renderSectionsList();
+                populateSectionSelect();
+                
+                elements.sectionName.value = '';
+                elements.sectionDesc.value = '';
+                
+                // Reset button
+                elements.addSectionBtn.innerHTML = '<span class="material-icons">add</span><span>Thêm phần học tập</span>';
+                elements.addSectionBtn.onclick = addSection;
+                
+                showToast('Đã cập nhật phần học tập (đã lưu cục bộ)!');
+            } finally {
+                hideLoadingSpinner();
+            }
+        }
+
+        // Delete Section
+        async function deleteSection(sectionId) {
+            if (confirm('Bạn có chắc chắn muốn xóa phần học tập này?')) {
+                // Show loading spinner
+                showLoadingSpinner();
+                
+                try {
+                    // Delete from Cloudflare D1
+                    const response = await fetch(`${API_BASE_URL}/sections/${sectionId}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to delete section');
+                    }
+                    
+                    // Update local state
+                    app.sections = app.sections.filter(s => s.id !== sectionId);
+                    saveToLocalStorage();
+                    renderSections();
+                    renderSectionsList();
+                    populateSectionSelect();
+                    
+                    showToast('Đã xóa phần học tập!');
+                } catch (error) {
+                    console.error('Error deleting section:', error);
+                    showToast('Lỗi khi xóa phần học tập!', 'error');
+                    
+                    // Fallback to localStorage if API fails
+                    app.sections = app.sections.filter(s => s.id !== sectionId);
+                    saveToLocalStorage();
+                    renderSections();
+                    renderSectionsList();
+                    populateSectionSelect();
+                    
+                    showToast('Đã xóa phần học tập (đã lưu cục bộ)!');
+                } finally {
+                    hideLoadingSpinner();
+                }
+            }
+        }
+
+        // Add Question
+        async function addQuestion() {
+            const sectionId = parseInt(elements.questionSection.value);
+            const text = elements.questionText.value.trim();
+            const answer = elements.questionAnswer.value.trim();
+            const explanation = elements.questionExplanation.value.trim();
+            
+            if (!sectionId) {
+                showToast('Vui lòng chọn phần học tập!', 'error');
+                return;
+            }
+            
+            if (!text || !answer) {
+                showToast('Vui lòng nhập đầy đủ nội dung câu hỏi và đáp án!', 'error');
+                return;
+            }
+            
+            const section = app.sections.find(s => s.id === sectionId);
+            if (!section) return;
+            
+            const newQuestion = {
+                id: Date.now(),
+                text,
+                answer,
+                explanation
+            };
+            
+            // Show loading spinner
+            showLoadingSpinner();
+            
+            try {
+                // Save to Cloudflare D1
+                const response = await fetch(`${API_BASE_URL}/questions`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        sectionId,
+                        ...newQuestion
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to add question');
+                }
+                
+                // Update local state
+                section.questions.push(newQuestion);
+                saveToLocalStorage();
+                renderQuestions();
+                
+                elements.questionText.value = '';
+                elements.questionAnswer.value = '';
+                elements.questionExplanation.value = '';
+                
+                showToast('Đã thêm câu hỏi mới!');
+            } catch (error) {
+                console.error('Error adding question:', error);
+                showToast('Lỗi khi thêm câu hỏi!', 'error');
+                
+                // Fallback to localStorage if API fails
+                section.questions.push(newQuestion);
+                saveToLocalStorage();
+                renderQuestions();
+                
+                elements.questionText.value = '';
+                elements.questionAnswer.value = '';
+                elements.questionExplanation.value = '';
+                
+                showToast('Đã thêm câu hỏi mới (đã lưu cục bộ)!');
+            } finally {
+                hideLoadingSpinner();
+            }
+        }
+
+        // Edit Question
+        function editQuestion(sectionId, questionId) {
+            const section = app.sections.find(s => s.id === sectionId);
+            if (!section) return;
+            
+            const question = section.questions.find(q => q.id === questionId);
+            if (!question) return;
+            
+            elements.questionSection.value = sectionId;
+            elements.questionText.value = question.text;
+            elements.questionAnswer.value = question.answer;
+            elements.questionExplanation.value = question.explanation || '';
+            
+            // Remove the old question
+            section.questions = section.questions.filter(q => q.id !== questionId);
+            
+            // Change button text to update
+            elements.addQuestionBtn.innerHTML = '<span class="material-icons">save</span><span>Cập nhật</span>';
+            elements.addQuestionBtn.onclick = updateQuestion;
+        }
+
+        // Update Question
+        async function updateQuestion() {
+            const sectionId = parseInt(elements.questionSection.value);
+            const text = elements.questionText.value.trim();
+            const answer = elements.questionAnswer.value.trim();
+            const explanation = elements.questionExplanation.value.trim();
+            
+            if (!sectionId) {
+                showToast('Vui lòng chọn phần học tập!', 'error');
+                return;
+            }
+            
+            if (!text || !answer) {
+                showToast('Vui lòng nhập đầy đủ nội dung câu hỏi và đáp án!', 'error');
+                return;
+            }
+            
+            const section = app.sections.find(s => s.id === sectionId);
+            if (!section) return;
+            
+            const updatedQuestion = {
+                id: Date.now(),
+                text,
+                answer,
+                explanation
+            };
+            
+            // Show loading spinner
+            showLoadingSpinner();
+            
+            try {
+                // Update in Cloudflare D1
+                const response = await fetch(`${API_BASE_URL}/questions/${updatedQuestion.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        sectionId,
+                        ...updatedQuestion
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to update question');
+                }
+                
+                // Update local state
+                section.questions.push(updatedQuestion);
+                saveToLocalStorage();
+                renderQuestions();
+                
+                elements.questionText.value = '';
+                elements.questionAnswer.value = '';
+                elements.questionExplanation.value = '';
+                
+                // Reset button
+                elements.addQuestionBtn.innerHTML = '<span class="material-icons">add</span><span>Thêm câu hỏi</span>';
+                elements.addQuestionBtn.onclick = addQuestion;
+                
+                showToast('Đã cập nhật câu hỏi!');
+            } catch (error) {
+                console.error('Error updating question:', error);
+                showToast('Lỗi khi cập nhật câu hỏi!', 'error');
+                
+                // Fallback to localStorage if API fails
+                section.questions.push(updatedQuestion);
+                saveToLocalStorage();
+                renderQuestions();
+                
+                elements.questionText.value = '';
+                elements.questionAnswer.value = '';
+                elements.questionExplanation.value = '';
+                
+                // Reset button
+                elements.addQuestionBtn.innerHTML = '<span class="material-icons">add</span><span>Thêm câu hỏi</span>';
+                elements.addQuestionBtn.onclick = addQuestion;
+                
+                showToast('Đã cập nhật câu hỏi (đã lưu cục bộ)!');
+            } finally {
+                hideLoadingSpinner();
+            }
+        }
+
+        // Delete Question
+        async function deleteQuestion(sectionId, questionId) {
+            if (confirm('Bạn có chắc chắn muốn xóa câu hỏi này?')) {
+                // Show loading spinner
+                showLoadingSpinner();
+                
+                try {
+                    // Delete from Cloudflare D1
+                    const response = await fetch(`${API_BASE_URL}/questions/${questionId}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error('Failed to delete question');
+                    }
+                    
+                    // Update local state
+                    const section = app.sections.find(s => s.id === sectionId);
+                    if (section) {
+                        section.questions = section.questions.filter(q => q.id !== questionId);
+                        saveToLocalStorage();
+                        renderQuestions();
+                    }
+                    
+                    showToast('Đã xóa câu hỏi!');
+                } catch (error) {
+                    console.error('Error deleting question:', error);
+                    showToast('Lỗi khi xóa câu hỏi!', 'error');
+                    
+                    // Fallback to localStorage if API fails
+                    const section = app.sections.find(s => s.id === sectionId);
+                    if (section) {
+                        section.questions = section.questions.filter(q => q.id !== questionId);
+                        saveToLocalStorage();
+                        renderQuestions();
+                    }
+                    
+                    showToast('Đã xóa câu hỏi (đã lưu cục bộ)!');
+                } finally {
+                    hideLoadingSpinner();
+                }
+            }
+        }
+
+        // Update Password
+        function updatePassword() {
+            const newPassword = elements.adminPassword.value.trim();
+            
+            if (!newPassword) {
+                showToast('Vui lòng nhập mật khẩu mới!', 'error');
+                return;
+            }
+            
+            app.adminPassword = newPassword;
+            saveToLocalStorage();
+            elements.adminPassword.value = '';
+            showToast('Đã cập nhật mật khẩu quản trị!');
+        }
+
+        // Export Data
+        function exportData() {
+            const dataStr = JSON.stringify({
+                sections: app.sections,
+                adminPassword: app.adminPassword
+            }, null, 2);
+            
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = 'english_app_data.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showToast('Đã xuất dữ liệu!');
+        }
+
+        // Import Data
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const data = JSON.parse(event.target.result);
+                        app.sections = data.sections || app.sections;
+                        app.adminPassword = data.adminPassword || app.adminPassword;
+                        saveToLocalStorage();
+                        renderSections();
+                        renderAdminContent();
+                        showToast('Đã nhập dữ liệu thành công!');
+                    } catch (error) {
+                        showToast('Lỗi khi nhập dữ liệu!', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+
+        // Show Toast Notification
+        function showToast(message, type = 'success') {
+            elements.toast.textContent = message;
+            elements.toast.classList.add('show');
+            
+            if (type === 'error') {
+                elements.toast.style.backgroundColor = 'var(--error)';
+            } else {
+                elements.toast.style.backgroundColor = 'var(--shadow)';
+            }
+            
+            setTimeout(() => {
+                elements.toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Show Loading Spinner
+        function showLoadingSpinner() {
+            elements.loadingSpinner.style.display = 'flex';
+        }
+
+        // Hide Loading Spinner
+        function hideLoadingSpinner() {
+            elements.loadingSpinner.style.display = 'none';
+        }
+
+        // Load data from Cloudflare D1
+        async function loadDataFromD1() {
+            showLoadingSpinner();
+            
+            try {
+                // Fetch sections from Cloudflare D1
+                const sectionsResponse = await fetch(`${API_BASE_URL}/sections`);
+                if (sectionsResponse.ok) {
+                    const sectionsData = await sectionsResponse.json();
+                    app.sections = sectionsData;
+                }
+                
+                // Fetch questions for each section
+                for (const section of app.sections) {
+                    const questionsResponse = await fetch(`${API_BASE_URL}/sections/${section.id}/questions`);
+                    if (questionsResponse.ok) {
+                        const questionsData = await questionsResponse.json();
+                        section.questions = questionsData;
+                    }
+                }
+                
+                saveToLocalStorage();
+            } catch (error) {
+                console.error('Error loading data from D1:', error);
+                // Use localStorage data if D1 fails
+            } finally {
+                hideLoadingSpinner();
+            }
+        }
+
+        // Initialize the app
+        init();
+    </script>
+</body>
+</html>
