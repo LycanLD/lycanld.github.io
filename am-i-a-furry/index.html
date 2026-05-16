@@ -2,45 +2,103 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Lyc4n's FAQ</title>
-</head>
-<body>
-    <h1>Am I a furry?</h1>
-    <p id="bigNo" style="font-size: 80px; font-weight: bold; font-family: monospace;">No</p>
-    <p><small>(try to change it to yes)</small></p>
-
-    <script>
-        const el = document.getElementById('bigNo');
-        let caught = false;
-
-        function bust() {
-            if (caught) return;
-            caught = true;
-            alert("BUSTED! :3. I'm always steps ahead of ya.");
-            el.innerHTML = "YOU ARE A FURRY NOW, :3.<br><span style='font-size:40px;'>No takebacks. >w< </span>";
-            el.style.fontSize = "50px";
+    <title>Am I a furry?</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            font-family: monospace;
+            position: relative;
         }
 
-        function checkAndBust() {
-            if (!caught && el.innerText.trim().toLowerCase() === 'yes') {
+        .surprise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 10000;
+            cursor: default;
+        }
+
+        stop, seriously-stop, what-are-you-doing, change-text-if-u-have-smol-pp, halt, cease, begone {
+            display: block;
+            text-align: center;
+        }
+
+        #target {
+            font-size: 120px;
+            font-weight: bold;
+            margin: 0;
+            cursor: default;
+        }
+
+        .shake {
+            animation: shake 0.1s infinite;
+            display: inline-block;
+            color: red;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            25% { transform: translate(-2px, -1px) rotate(1deg); }
+            50% { transform: translate(2px, -2px) rotate(-1deg); }
+            75% { transform: translate(-1px, 2px) rotate(1deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="surprise" msg="Surprise!"></div>
+    <div style="text-align: center; position: relative; z-index: 1;">
+        <stop-right-there>
+            <seriously-stop>
+                <what-are-you-doing>
+                    <change-text-if-ur-a-furry-and-gay>
+                        <h1 id="target" msg="you're the worst, i hope you know that">No.</h1>
+                    </change-text-if-ur-a-furry-and-gay>
+                </what-are-you-doing>
+            </seriously-stop>
+        </stop-right-there>
+    </div>
+
+    <script>
+        const el = document.getElementById('target');
+        let triggered = false;
+
+        // Series of alert messages
+        const alertMessages = [
+            "Wow, you actually did it!",
+            "You changed 'No.' to 'Yes.'",
+            "That means you're gay!.",
+            "Also... you're a furry now. IN FACT.",
+            "Anyway... here's your reward."
+        ];
+
+        function bust() {
+            if (triggered) return;
+            triggered = true;
+            el.innerHTML = '<span class="shake" style="font-size:150px;">YES</span>';
+            for (let msg of alertMessages) {
+                alert(msg);
+            }
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        }
+
+        function check() {
+            if (!triggered && el.innerText.trim().toLowerCase() === 'yes') {
                 bust();
-            } else if (caught && el.innerText.trim().toLowerCase() === 'yes') {
-                alert("Still a furry. Stop trying.");
-                el.innerHTML = "STILL A FURRY. GIVE UP.";
-                el.style.fontSize = "40px";
             }
         }
 
-        const observer = new MutationObserver(() => {
-            checkAndBust();
-        });
-
-        observer.observe(el, { 
-            childList: true, 
-            characterData: true, 
-            subtree: true 
-        });
-        checkAndBust();
+        const observer = new MutationObserver(() => check());
+        observer.observe(el, { childList: true, characterData: true, subtree: true });
+        check();
     </script>
 </body>
 </html>
