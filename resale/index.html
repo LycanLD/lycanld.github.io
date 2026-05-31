@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fuh you</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #text {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 8rem;
+            font-weight: bold;
+        }
+
+        #video {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+<div id="text">FAK YOU</div>
+
+<video
+    id="video"
+    autoplay
+    muted
+    playsinline
+>
+    <source src="https://raw.githubusercontent.com/LycanLD/lycanld.github.io/main/fuhyou.mp4" type="video/mp4">
+</video>
+
+<script>
+setTimeout(() => {
+    document.getElementById("text").style.display = "none";
+
+    const video = document.getElementById("video");
+    video.style.display = "block";
+
+    video.play().catch(err => {
+        console.log("Autoplay blocked:", err);
+    });
+}, 600);
+</script>
+
+</body>
+</html>
