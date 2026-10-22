@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Lumi's Page</title>
+  <title>Lumi's Profile</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Lycan's personal bio.">
-  <link rel="icon" type="image/png" href="icon.png" />
+  <meta name="description" content="Lumi's personal bio.">
+  <link id="favicon" rel="icon" type="image/png"
+        href="https://lumi-dev-bio.tranlongdo2506.workers.dev/icon.png" />
+
   <meta property="og:url" content="https://lycanld.github.io/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Lycan's Page">
-  <meta property="og:description" content="Lycan's personal bio.">
+  <meta property="og:title" content="Lumi's Profile">
+  <meta property="og:description" content="Lumi's personal bio.">
   <meta property="og:image" content="https://opengraph.b-cdn.net/production/images/22e8134e-398b-4460-83ab-c66ad612e9b9.png?token=4GokfUsbhl4ji5z9V-LKArAOH7VCz_2jEQ5os6rupTg&height=1200&width=1200&expires=33293602905">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="twitter:domain" content="lycanld.github.io">
   <meta property="twitter:url" content="https://lycanld.github.io/">
-  <meta name="twitter:title" content="Lycan's Page">
-  <meta name="twitter:description" content="Lycan's personal bio.">
-  <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/22e8134e-398b-4460-83ab-c66ad612e9b9.png?token=4GokfUsbhl4ji5z9V-LKArAOH7VCz_2jEQ5os6rupTg&height=1200&width=1200&expires=33293602905">
+  <meta property="twitter:title" content="Lumi's Profile">
+  <meta property="twitter:description" content="Lumi's personal bio.">
+  <meta property="twitter:image" content="https://opengraph.b-cdn.net/production/images/22e8134e-398b-4460-83ab-c66ad612e9b9.png?token=4GokfUsbhl4ji5z9V-LKArAOH7VCz_2jEQ5os6rupTg&height=1200&width=1200&expires=33293602905">
 
   <style>
     html, body {
@@ -35,11 +37,38 @@
       display: block;
     }
   </style>
+
+  <script>
+    window.addEventListener("message", function (event) {
+      if (event.origin !== "https://lumi-dev-bio.tranlongdo2506.workers.dev") return;
+
+      var frame = document.getElementById("lumi-frame");
+      if (!frame || event.source !== frame.contentWindow) return;
+
+      var data = event.data;
+      if (!data || data.type !== "lumi:meta") return;
+
+      if (data.title) document.title = data.title;
+
+      if (data.icon) {
+        var link = document.getElementById("favicon");
+        if (!link) {
+          link = document.createElement("link");
+          link.id = "favicon";
+          link.rel = "icon";
+          document.head.appendChild(link);
+        }
+        link.type = "image/png";
+        link.href = data.icon;
+      }
+    });
+  </script>
 </head>
 <body>
   <iframe
+    id="lumi-frame"
     src="https://lumi-dev-bio.tranlongdo2506.workers.dev/"
-    title="Long Do's Space"
+    title="Lumi's Profile"
     allowfullscreen
     loading="eager"
     referrerpolicy="strict-origin-when-cross-origin">
